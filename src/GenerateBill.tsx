@@ -377,7 +377,7 @@ const GenerateBill = (props: IBillDetails) => {
                   Less Discount
                 </td>
                 <td style={{ flex: 3 }} className="outerBorder">
-                  {props.tax.discount}
+                  {(calculateTotal() * props.tax.discount) / 100}
                 </td>
               </tr>
 
@@ -401,7 +401,8 @@ const GenerateBill = (props: IBillDetails) => {
                   Total Taxable Value
                 </td>
                 <td style={{ flex: 3 }} className="outerBorder">
-                  {calculateTotal() - props.tax.discount}
+                  {calculateTotal() -
+                    (calculateTotal() * props.tax.discount) / 100}
                 </td>
               </tr>
               <tr className="productTable">
@@ -500,7 +501,11 @@ const GenerateBill = (props: IBillDetails) => {
                   Tax Payable on Reverse Charge
                 </td>
                 <td style={{ flex: 3 }} className="outerBorder">
-                  {props.tax.taxPayableOnReverseCharge}
+                  {Math.round(
+                    (calculateGrandTotal() *
+                      props.tax.taxPayableOnReverseCharge) /
+                      100
+                  )}
                 </td>
               </tr>
             </tbody>

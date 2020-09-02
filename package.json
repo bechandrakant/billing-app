@@ -19,11 +19,11 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start-before-electron": "set BROWSER=none && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "start-before-electron": "set BROWSER=none && react-scripts start",
     "start-electron": "set ELECTRON_START_URL=http://localhost:3000 && electron ."
   },
   "eslintConfig": {
