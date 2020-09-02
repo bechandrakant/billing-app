@@ -7,6 +7,7 @@ const AddCustomerDetails = (props: any) => {
     name: "",
     address: "",
     gstin: "",
+    invoiceNumber: 0,
     stateName: "",
     stateCode: "",
   });
@@ -30,7 +31,20 @@ const AddCustomerDetails = (props: any) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    props.addCustomerDetails(customerDetails);
+    if (
+      customerDetails.address === "" ||
+      customerDetails.name === "" ||
+      customerDetails.invoiceNumber === 0 ||
+      customerDetails.gstin === "" ||
+      customerDetails.stateName === ""
+    ) {
+      if (customerDetails.gstin.length !== 15) {
+        alert("Please enter valid GSTIN");
+      }
+      alert("Please enter customer details");
+      return;
+    }
+    props.addCustomerDetail(customerDetails);
   };
 
   const renderStateOptions = () => {
@@ -50,6 +64,7 @@ const AddCustomerDetails = (props: any) => {
         name="state"
         onChange={(e) => handleStateChange(e.target.value)}
       >
+        <option value="">Select State</option>
         {options}
       </select>
     );
@@ -57,14 +72,22 @@ const AddCustomerDetails = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Name:</label>
+      <label>Name&nbsp;&nbsp;&nbsp;:&nbsp;</label>
       <input type="text" id="name" onChange={handleChange} />
-      <label>Address:</label>
+      <br />
+      <label>Address:&nbsp;</label>
       <input type="text" id="address" onChange={handleChange} />
-      <label>GST:</label>
+      <br />
+      <label>GST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label>
       <input type="text" id="gstin" onChange={handleChange} />
-      <label>State:</label>
+      <br />
+      <label>State&nbsp;</label>
       {renderStateOptions()}
+      <br />
+      <label>INVOICE NUMBER&nbsp;:&nbsp;</label>
+      <input type="text" id="invoiceNumber" onChange={handleChange} />
+      <br />
+      <button type="submit">Add Customer Details</button>
     </form>
   );
 };

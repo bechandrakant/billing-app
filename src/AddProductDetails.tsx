@@ -38,35 +38,42 @@ const AddProductDetails = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Name of Product:</label>
+      <label>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label>
       <input
         type="text"
         id="name"
         onChange={handleChange}
         value={productDetail.name}
       />
-      <label>HSN Code:</label>
+      <br />
+      <label>HSN Code:&nbsp;</label>
       <input
         type="text"
         id="hsnCode"
         onChange={handleChange}
         value={productDetail.hsnCode}
       />
-      <label>QTY:</label>
+      <br />
+      <label>Quantity&nbsp;&nbsp;&nbsp;:&nbsp;</label>
       <input
         type="number"
         id="quantity"
         onChange={handleChange}
         value={productDetail.quantity}
       />
-      <label>RATE:</label>
+      <br />
+      <label>
+        RATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
+      </label>
       <input
         type="number"
         id="rate"
         onChange={handleChange}
         value={productDetail.rate}
       />
+      <br />
       <button>Add Product</button>
+      <br />
     </form>
   );
 };
